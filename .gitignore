@@ -1,0 +1,45 @@
+# Garmin sleep data (personal/private)
+data/*.json
+data/*.csv
+data/raw/
+data/processed/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE settings
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.bak
+
+# Large export files (optional - remove if you want to track these)
+exports/*.html
+exports/*.png
+exports/*.pdf
+
+# Environment variables
+.env

@@ -1,0 +1,18 @@
+# Core data processing
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Visualization
+plotly>=5.14.0
+kaleido>=0.2.1
+
+# Jupyter
+jupyter>=1.0.0
+notebook>=6.5.0
+ipywidgets>=8.0.0
+
+# Date/time handling
+pytz>=2023.3
+
+# Optional: for potential future features
+scipy>=1.10.0
