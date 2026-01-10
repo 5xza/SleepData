@@ -38,8 +38,11 @@ Thumbs.db
 
 # Large export files (optional - remove if you want to track these)
 exports/*.html
+!docs/*.html
 exports/*.png
 exports/*.pdf
 
 # Environment variables
 .env
+
+!docs/*.html
