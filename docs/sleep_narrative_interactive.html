@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sleep Patterns: A Data Story</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --midnight: #0a0e27;
+            --deep-blue: #1a2332;
+            --twilight: #2d4263;
+            --moon-glow: #c4d7e0;
+            --dawn: #f0e5cf;
+            --sunrise: #ffa07a;
+            --accent: #4a90e2;
+            --text-light: #e8e8e8;
+            --text-muted: #a0a0a0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: linear-gradient(to bottom, var(--midnight) 0%, var(--deep-blue) 50%, var(--twilight) 100%);
+            color: var(--text-light);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+        
+        /* Animated stars background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 6rem;
+        }
+        
+        header {
+            text-align: center;
+            padding: 8rem 0 4rem;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            text-align: left;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--moon-glow), var(--sunrise));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            text-align: left;
+        }
+        
+        .intro {
+            margin-bottom: 6rem;
+            text-align: left;
+            font-size: 1.2rem;
+            color: var(--moon-glow);
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+        
+        .section {
+            margin-bottom: 8rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.5s; }
+        .section:nth-child(4) { animation-delay: 0.6s; }
+        .section:nth-child(5) { animation-delay: 0.7s; }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(196, 215, 224, 0.2);
+        }
+        
+        .section-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--accent);
+            opacity: 0.4;
+            line-height: 0.8;
+        }
+        
+        .section-title {
+            flex: 1;
+        }
+        
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--dawn);
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+        
+        .narrative-text {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--moon-glow);
+        }
+        
+        .narrative-text p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .visualization-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .viz-card {
+            background: rgba(26, 35, 50, 0.7);
+            border: 1px solid rgba(196, 215, 224, 0.1);
+            border-radius: 12px;
+            padding: 3rem;
+            backdrop-filter: blur(1px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            min-height: auto;
+            height: auto
+        }
+        
+        .viz-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(74, 144, 226, 0.2);
+        }
+        
+        .viz-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--dawn);
+        }
+        
+        .viz-description {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 0.25rem;
+            line-height: 1.6;
+        }
+        
+        /* Interactive chart iframe styling */
+        .viz-container {
+            background: transparent;
+            border-radius: 8px;
+            overflow: hidden;
+            min-height: auto;
+            height: auto
+        }
+        
+        .viz-container iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            display: block;
+            margin: 0 auto;
+            min-height: 400px;
+            overflow: visible;
+        }
+        
+        /* Adjust iframe height for different chart types */
+        .viz-container.tall iframe {
+            height: 700px;
+            overflow: visible;  /* Changed from hidden so nothing gets cut off */
+            height: auto;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .viz-container.extra-tall iframe {
+            height: 1080px;
+            overflow: visible;  /* Changed from hidden so nothing gets cut off */
+            height: auto;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .insight-box {
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.15), rgba(255, 160, 122, 0.1));
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 900px;
+        }
+        
+        .insight-label {
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        
+        .insight-text {
+            font-size: 1.05rem;
+            color: var(--accent);
+            line-height: 1.7;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 6rem 0 4rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(196, 215, 224, 0.1);
+            margin-top: 6rem;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            
+            .section-number {
+                font-size: 3rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .viz-container iframe {
+                height: 120px;
+                transform: scale(0.4);
+                transform-origin: top center;
+                margin-bottom: -240px;  /* Pull up content below */
+                margin-left: -75%;  /* ADD THIS - removes left padding */
+                margin-right: -75%;  /* ADD THIS - removes right padding */
+                width: 250%;
+            }
+            
+            .viz-container.tall iframe{
+                height: 320px;
+                transform: scale(0.5);
+                transform-origin: top center;
+                margin-bottom: -320px;  /* Pull up content below */
+                margin-left: -60%;  /* ADD THIS - removes left padding */
+                margin-right: -60%;  /* ADD THIS - removes right padding */
+                width: 220%;
+            }
+
+            .viz-container.extra-tall iframe {
+                height: 400px;
+                transform: scale(0.5);
+                transform-origin: top center;
+                margin-bottom: -500px;  /* Pull up content below */
+                margin-left: -50%;  /* ADD THIS - removes left padding */
+                margin-right: -50%;  /* ADD THIS - removes right padding */
+                width: 200%;
+            }
+
+            .container {
+                padding: 0 2rem !important;  /* Reduced from 4rem to 1rem */
+            }
+            
+            header {
+                padding: 4rem 0 2rem !important;  /* Reduced top/bottom padding */
+            }
+            
+            .section {
+                margin-bottom: 4rem !important;
+
+            /* Stack two-column layouts on mobile - more specific */
+            .intro {
+                display: block !important;
+            }
+            
+            .intro > div {
+                margin-bottom: 2rem;
+            }
+            
+            .viz-card div[style*="display: grid"] {
+                display: block !important;
+            }
+            
+            .viz-card div[style*="display: grid"] > div {
+                margin-bottom: 2rem;
+                padding: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated stars background -->
+    <div class="stars" id="stars"></div>
+    
+    <div class="container">
+        <header>
+            <h1>A-REM-ian nights</h1>
+            <p class="subtitle">Visualising two years of sleep-data, proving and (mostly) disproving my own sleep related theories</p>
+        </header>
+        
+        <div class="intro">
+            <p>I can never overstate how much I love sleep. I obsessively think about how it is influenced by everything through every day, and how to perfect it. 
+                This motivated me to pull all the sleep data that was available from my fitness tracker for the last 2 years, and dig through it to find some clues.
+            </p>
+        </div>
+        
+        <!-- Section 1: Overall Analysis -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <div class="section-title">
+                    <h2>The Big Picture</h2>
+                    <p class="section-subtitle">Observing overall sleep patterns</p>
+                </div>
+            </div>
+            
+            <div class="narrative-text">
+                <p>
+                    The first thing I did was to make a visual with EVERYTHING in it, so I could look for some meta patterns. 
+                    A special feature of this analysis is the correlation with my monthly subscription to female biology - periods, endearingly referred to as <b>Irma</b> henceforth. 
+                    I was convinced that the physical and emotional distress during that time of the month have a negative effect on my sleep quality. 
+                    Though I could only show one year at a time with this circular grid, its a full cycle of all seasons and a pretty good starting point. 
+                </p>  
+            </div>
+            
+            <div class="visualization-grid">
+                <div class="viz-card">
+                    <h3 class="viz-title">Sleep performance in 2025</h3>
+                    <p class="viz-description">
+                        • Each cell on the grid represents one night of the year.
+                        <br>• The colour of each cell is that night's sleep quality score: the bluer the better, the oranger the poorer.
+                        <br>• The 12 months are angular slices and the concentric rings show the 7 days of the week.
+                        <br>• And the dots in each cell represent the phases of Irma - The red dots of bloody days are dated accurately. The others are approximations with PMS as ~7 days before the day Irma arrived, Eggy as ~7 days before PMS and the rest are Free.
+                    </p>
+                    <div class="viz-container extra-tall">
+                        <iframe src="circular_calendar.html" title="Circular Calendar Grid " style="height: 1000px;"></iframe>
+                    </div>
+                </div>
+                
+                <div class="viz-card">
+                    <h3 class="viz-title">Sleep Quality Distribution</h3>
+                        <p class="viz-description">A pie chart breaking down the proportion of excellent, good, fair, and poor sleep nights across the entire dataset.</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1.8fr; gap: 3rem; align-items: top;">
+                        <div class="viz-container">
+                            <iframe src="sleep_quality_pie.html" title="Sleep Quality Pie Chart" style="height: 400px;"></iframe>
+                        </div>
+                        <div style="padding: 2rem;">
+                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 1rem;">
+                                One of the theories I had before the analysis was that I have almost as many poor days as I have good. I was pleasantly surprised to see the low share of poor days, and the remarkably high share of good days. However, the latter mostly ranges just between "Fair" (70s) and "Good" (80s). I kind of knew this which the data now confirmed. 
+                            </p>
+                            <div class="insight-box">
+                                <p class="insight-text">
+                                    96 is the highest ever I ever had, on 4 days in the entire dataset of 700 days. 
+                                    <br>"Very Good" (90-95) or "Excellent" (>95) was a rare black swan sighting. 
+                                    <br>And 100 is just Bigfoot.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="viz-card">
+                    <h3 class="viz-title">Best and Worst Days</h3>
+                    <p class="viz-description">Candlestick chart showing the bed time and waking time pattern.</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1.8fr; gap: 3rem; align-items: top;">
+                        <div style="padding: 0rem;">
+                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
+                                Tempering my ambitions a bit, I want to find the recipe for the 85+, as that is more recurring and concurs with my feeling of a satisfactory sleep. 
+                                <br><br>The lower end definitely has had erratic timings and durations. I can identify many of those were dates when I was travelling. Something to probe in future analysis on this topic.
+                            </p>
+                            <div class="insight-box">
+                                <p class="insight-text">The higher scores have roughly consistent bedtimes of around 11-12 pm and wake time of 8-9 am. </p>
+                            </div>
+                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
+                                I’m not sure if that’s just my body clock, or Garmin in general rewards this particular pattern to all its users. But it's a good lead to explore more.
+                            </p>
+                        </div>
+                        <div class="viz-container tall">
+                            <iframe src="candlestick_chart.html" title="Candlestick Chart" style="height: 600px;"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 2: Weekly Analysis -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <div class="section-title">
+                    <h2>Weekly Waves</h2>
+                    <p class="section-subtitle">How days of the week shape sleep</p>
+                </div>
+            </div>
+            
+            <div class="narrative-text">
+                <p>
+                    My hypothesis before I started the visualisations was that weekends have better sleep because there’s no work stress and plenty of time to sleep in etc.  
+                    Then I saw the ‘everything’ chart (the circular calendar grid) above, the outer rings seemed to have more orange in them. So I unfurled the rings into bar and line charts and plotted the scores split through each day of the week. 
+                </p>
+            </div>
+            
+            <div class="visualization-grid">                
+                <div class="viz-card">
+                    <h3 class="viz-title">Weekly Sleep Quality Distribution</h3>
+                    <p class="viz-description">Horizontal bar chart comparing sleep quality for each day of the week.</p>
+                    <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: top;">
+                        <div>
+                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 1rem;">
+                                Weekdays are clearly doing better than the weekends. It becomes more obvisous when you flatten the bars to Quality intervals. 
+                                And on second thoughts, weekends are not surprising because there is indulgent dining, physical tiredness, and late bed times. Also, many travel days coincide with weekends more than weekdays. 
+                            </p>
+                            <div class="insight-box">
+                                <p class="insight-text">8/10 of the 90+ scores are on weekdays. </p>
+                            </div>
+                            <p style="color: var(--moon-glow); line-height: 1.8;">
+                                Note to self - Investigate the extra orange on Tuesday. Maybe its mid-week work fatigue during some specific weeks.
+                            </p>
+                        </div>
+                        <div class="viz-container">
+                            <iframe src="weekly_bar_chart.html" title="Weekly Bar Chart" style="height: 360px;"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="viz-card">
+                    <h3 class="viz-title">Weekly Mean of all Sleep Stages</h3>
+                    <p class="viz-description">
+                        - Trend lines comparing the mean sleep stages - Deep, Light, REM and Total for each day of the week.
+                        <br> - Top line covers the mean sleep score of each day of the week
+                    </p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: top;">
+                        <div class="viz-container">
+                            <iframe src="weekly_line_chart.html" title="Weekly Line Chart" style="height: 400px;"></iframe>
+                        </div>
+                        <div>
+                            <div class="insight-box">
+                                <p class="insight-text">
+                                    Tuesday is only one with mean sleep >8 hours AND sleep score >70.
+                                    <br>Deep and REM are roughly consistent at ~1 and ~2 hours, but still marginally better on weekdays.
+                                </p>
+                            </div>
+                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
+                                Garmin says deep sleep is important for physical recovery, whereas REM is good for improving memory function. 
+                                <br><br>I don't mind the extraordinarily long REM. I love that rush of visiting another world, even though I forget the actual dreams soon after waking up. 
+                                But I think it cuts into my deep-sleep. Increasing physical activities/workout could pull in some more Deep, and get me that 100 I dream about.  
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 3: Monthly Analysis -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <div class="section-title">
+                    <h2>Seasonal Shifts</h2>
+                    <p class="section-subtitle">How months and seasons influence rest</p>
+                </div>
+            </div>
+            
+            <div class="narrative-text">
+                <p>
+                    So far my undisputed theory was that I sleep better in spring, summer, and autumn compared to winter. 
+                    Even though winter has that whole 'cozy holidays' personality, my preferred sleep condition is that it should be cool and breezy, enough to pull up a thin blanket but keep one foot out of the blanket. 
+                </p>
+            </div>
+            
+            <div class="visualization-grid">
+                <div class="viz-card">
+                    <h3 class="viz-title">Monthly Sleep Quality Distribution</h3>
+                    <p class="viz-description">Horizontal bar chart comparing quality across all months.
+                        <br>*Feb and March have many missing days in the dataset, so these 2 bars might be skewed.
+                    </p>
+                    <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: top;">
+                        <div>
+                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 1rem;">
+                                Well, hypothesis confirmed about warmer months winning on quality. 
+                                One of the two things that I can think of that moves in a similar path across months is Temperature, as I previously suspected. 
+                            </p>
+                            <div class="insight-box">
+                                <p class="insight-text">May to August have ~14% of all poor sleep days (under 40), 
+                                    and ~41% of all good sleep days (above 80).
+                                </p>
+                            </div>
+                            <p style="color: var(--moon-glow); line-height: 1.8;">
+                                The second one besides temperature, is the higher amount of outdoors physical activity that likely contributes to better sleep quality in warmer months. 
+                            </p>
+                        </div>
+                        <div class="viz-container">
+                            <iframe src="monthly_bar_chart.html" title="Monthly Bar Chart" style="height: 360px;"></iframe>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="viz-card">
+                    <h3 class="viz-title">Monthly Mean of all Sleep Stages</h3>
+                    <p class="viz-description">
+                        - Trend lines comparing the mean sleep stages - Deep, Light, REM and Total for each month.
+                        <br> - Top line covers the mean sleep score of each month.
+                    </p>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: top;">
+                        <div class="viz-container">
+                            <iframe src="monthly_line_chart.html" title="Monthly Line Chart" style="height: 400px;"></iframe>
+                        </div>
+                        <div>
+                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
+                                Here's another quirky seasonal insight - the quality-score trend is almost an inverse of the sleep-duration trend. 
+                                Even though there more hours of sleep during the colder months, the score is still better in warmer ones.  
+                            </p>
+                            <div class="insight-box">
+                                <p class="insight-text">
+                                    July has the highest mean score (73.17) with highest deep and REM mean durations. 
+                                    <br>December has the highest total sleep duration (8.23 hrs), but has the second lowest mean score (62.55).
+                                </p>
+                            </div>
+                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
+                                It should be noted that this total sleep duration is the total time spent in bed, including the restless awake moments. 
+                                This explains the poor quality of these longsleep/low score days. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Section 4: Irma Analysis -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <div class="section-title">
+                    <h2>Irma's Journey</h2>
+                    <p class="section-subtitle">The cycle of sleep through cycles of biology</p>
+                </div>
+            </div>
+            
+            <div class="narrative-text">
+                <p>
+                    The pièce de résistance of this whole study - how has my menstrual cycle been affecting my sleep. 
+                    I made another chart similar to the first circular calendar, but this time with more focus on comparing the cycle days with bar sizes instead of just the colour gradients.
+                </p>
+            </div>
+            
+            <div class="visualization-grid">
+                <div class="viz-card">
+                    <h3 class="viz-title">Radial Phase Chart</h3>
+                    <p class="viz-description">
+                        The red bloody Irma days are dated accurately, naturally. 
+                        <br>The others dates are approximations: 
+                        <br> • PMS is ~7 days before the day Irma arrived
+                        <br> • Eggy as ~7 days before PMS
+                        <br> • The rest are Free. 
+                    </p>
+                    <div class="viz-container extra-tall">
+                        <iframe src="irma_radial_chart.html" title="Irma Radial Chart" style="height: 1000px;"></iframe>
+                    </div>
+                    <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
+                        The red nights actually have longer bars! This goes contrary to my hypothesis. 
+                        Even on the the first 3 days, the bars are mostly long despite max discomfort of intermittent cramps and getting up multiple times in the night to change. 
+                        <br><br>But the hormones must be doing something. And they are, on the other days leading up to the actual Irma arrival. 
+                        The white (”Eggy” aka ovulating days) and yellow (PMS) have more number of short bars compared to other days.
+                    </p>
+                </div>
+                <div class="viz-card">
+                    <h3 class="viz-title">Phase Comparison</h3>
+                    <p class="viz-description">Horizontal bar chart comparing sleep metrics across the different phases of the cycle, revealing which phases bring the most restorative rest.</p>
+                    <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: top;">
+                        <div class="viz-container">
+                            <iframe src="irma_bar_chart.html" title="Irma Bar Chart" style="height: 400px;"></iframe>
+                        </div>
+                        <div>
+                            <div class="insight-box">
+                                <p class="insight-text">
+                                    Only 1 of all 35 poor (under 40) score is an Irma day, whereas 25 are on a PMS or Eggy day.
+                                    <br>7 of the 10 best (>90 score) days are on a Free day. 
+                                </p>
+                            </div>
+                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
+                                Eggy seems to have the most count of poor days followed by PMS, although the boundary between eggy and PMS is difficult to draw. Collectively, they claim most of the poor sleep days.
+                                And we can say for certain that Irma is released of all charges.
+                                <br>Sorry Irma!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="narrative-text" style="margin-top: 2rem;">
+                <p>
+                    Summarising what I learnt,
+                    <br> • There are far more good days than bad
+                    <br> • Consistent bed-time and waking-time improve sleep
+                    <br> • Weekdays are better than weekends; Summers are better than winters
+                    <br> • Increased outdoor physical activities improve sleep
+                    <br> • PMS has latent negative effect compared to actual period days
+                    <br><br>Of course, all of this analysis is speculative and there are so many variables in this equation that it cannot give a black and white to-do list. 
+                    What it has given me is some debunked theories about my sleep that I was totally convinced with, and an endless curiosity to find out more variables and debunk (or hopefully bunk) more of my theories.
+                </p>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Data collected from Garmin devices over 700 nights | Visualizations created with Plotly and Python</p>
+            <p style="margin-top: 1rem; opacity: 0.6;">Every dataset tells a human story.</p>
+        </footer>
+    </div>
+    
+    <script>
+        // Generate random stars
+        const starsContainer = document.getElementById('stars');
+        const numberOfStars = 150;
+        
+        for (let i = 0; i < numberOfStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
+        }
+        
+        // Smooth scroll reveal animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
