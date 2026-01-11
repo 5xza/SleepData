@@ -294,7 +294,7 @@
         
         /* Responsive design */
         @media (max-width: 1200px) {
-    /* Stack two-column layouts */
+        /* Stack two-column layouts */
             .intro {
                 display: block !important;
             }
@@ -332,35 +332,6 @@
                 align-items: flex-start;
                 gap: 1rem;
             }
-            
-            .viz-container iframe {
-                transform: scale(0.4);
-                transform-origin: top center;
-                margin-bottom: -240px;  /* Pull up content below */
-                margin-left: -75%;  /* ADD THIS - removes left padding */
-                margin-right: -75%;  /* ADD THIS - removes right padding */
-                width: 250%;
-            }
-            
-            .viz-container.tall iframe{
-                height: 320px;
-                transform: scale(0.5);
-                transform-origin: top center;
-                margin-bottom: -320px;  /* Pull up content below */
-                margin-left: -60%;  /* ADD THIS - removes left padding */
-                margin-right: -60%;  /* ADD THIS - removes right padding */
-                width: 220%;
-            }
-
-            .viz-container.extra-tall iframe {
-                height: 400px;
-                transform: scale(0.5);
-                transform-origin: top center;
-                margin-bottom: -500px;  /* Pull up content below */
-                margin-left: -50%;  /* ADD THIS - removes left padding */
-                margin-right: -50%;  /* ADD THIS - removes right padding */
-                width: 200%;
-            }
 
             .container {
                 padding: 0 1rem;  /* Reduced from 4rem to 1rem */
@@ -393,6 +364,63 @@
             .viz-card div[style*="display: grid"] > div {
                 margin-bottom: 1rem;
                 padding: 0 ;
+            }
+
+            /* Chart type-specific scaling on mobile */
+    
+            /* Circular charts (calendar, radial) */
+            .circular-chart {
+                transform: scale(0.45);
+                transform-origin: top center;
+                height: 800px;
+                margin-bottom: -560px;  /* Pull up content below */
+                margin-left: -50%;  /* ADD THIS - removes left padding */
+                margin-right: -50%;  /* ADD THIS - removes right padding */
+                width: 200%;
+            }
+            
+            /* Pie chart */
+            .pie-chart {
+                transform: scale(0.7);
+                transform-origin: top center;
+                height: 200px !important;
+                margin-bottom: -130px;
+                margin-left: -20%;  
+                margin-right: -20%;
+                width: 140%;
+            }
+            
+            /* Line charts */
+            .line-chart {
+                transform: scale(0.6);
+                transform-origin: top center;
+                height: 420px !important;
+                margin-bottom: -200px;
+                margin-left: -25%;  
+                margin-right: -25%;
+                width: 150%;
+            }
+            
+            /* Bar charts */
+            .bar-chart {
+                transform: scale(0.6);
+                transform-origin: top center;
+                height: 350px !important;
+                margin-bottom: -200px;
+                margin-left: -70%;  
+                margin-right: -70%;
+                width: 240%;
+            }
+            
+            /* Candlestick chart */
+            .candlestick-chart {
+                transform: scale(0.5);
+                transform-origin: top center;
+                height: 640px !important;
+                margin-bottom: -350px;
+                margin-left: -50%;  
+                margin-right: -50%;
+                width: 200%;
             }
         }
     </style>
@@ -442,7 +470,7 @@
                         <br>• And the dots in each cell represent the phases of Irma - The red dots of bloody days are dated accurately. The others are approximations with PMS as ~7 days before the day Irma arrived, Eggy as ~7 days before PMS and the rest are Free.
                     </p>
                     <div class="viz-container extra-tall">
-                        <iframe src="circular_calendar.html" title="Circular Calendar Grid " style="height: 1000px;"></iframe>
+                        <iframe class="circular-chart" src="circular_calendar.html" title="Circular Calendar Grid " style="height: 1000px;"></iframe>
                     </div>
                 </div>
                 
@@ -451,7 +479,7 @@
                         <p class="viz-description">A pie chart breaking down the proportion of excellent, good, fair, and poor sleep nights across the entire dataset.</p>
                     <div style="display: grid; grid-template-columns: 1fr 1.8fr; gap: 3rem; align-items: top;">
                         <div class="viz-container">
-                            <iframe src="sleep_quality_pie.html" title="Sleep Quality Pie Chart" style="height: 400px;"></iframe>
+                            <iframe class="pie-chart" src="sleep_quality_pie.html" title="Sleep Quality Pie Chart" style="height: 400px;"></iframe>
                         </div>
                         <div style="padding: 2rem;">
                             <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 1rem;">
@@ -485,7 +513,7 @@
                             </p>
                         </div>
                         <div class="viz-container tall">
-                            <iframe src="candlestick_chart.html" title="Candlestick Chart" style="height: 600px;"></iframe>
+                            <iframe class="candlestick-chart" src="candlestick_chart.html" title="Candlestick Chart" style="height: 600px;"></iframe>
                         </div>
                     </div>
                 </div>
@@ -527,7 +555,7 @@
                             </p>
                         </div>
                         <div class="viz-container">
-                            <iframe src="weekly_bar_chart.html" title="Weekly Bar Chart" style="height: 360px;"></iframe>
+                            <iframe class="bar-chart" src="weekly_bar_chart.html" title="Weekly Bar Chart" style="height: 360px;"></iframe>
                         </div>
                     </div>
                 </div>
@@ -539,7 +567,7 @@
                     </p>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: top;">
                         <div class="viz-container">
-                            <iframe src="weekly_line_chart.html" title="Weekly Line Chart" style="height: 400px;"></iframe>
+                            <iframe class="line-chart" src="weekly_line_chart.html" title="Weekly Line Chart" style="height: 400px;"></iframe>
                         </div>
                         <div>
                             <div class="insight-box">
@@ -598,7 +626,7 @@
                             </p>
                         </div>
                         <div class="viz-container">
-                            <iframe src="monthly_bar_chart.html" title="Monthly Bar Chart" style="height: 360px;"></iframe>
+                            <iframe class="bar-chart" src="monthly_bar_chart.html" title="Monthly Bar Chart" style="height: 360px;"></iframe>
                         </div>
                     </div>                    
                 </div>
@@ -610,7 +638,7 @@
                     </p>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: top;">
                         <div class="viz-container">
-                            <iframe src="monthly_line_chart.html" title="Monthly Line Chart" style="height: 400px;"></iframe>
+                            <iframe class="line-chart" src="monthly_line_chart.html" title="Monthly Line Chart" style="height: 400px;"></iframe>
                         </div>
                         <div>
                             <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
@@ -661,7 +689,7 @@
                         <br> • The rest are Free. 
                     </p>
                     <div class="viz-container extra-tall">
-                        <iframe src="irma_radial_chart.html" title="Irma Radial Chart" style="height: 1000px;"></iframe>
+                        <iframe class="circular-chart" src="irma_radial_chart.html" title="Irma Radial Chart" style="height: 1000px;"></iframe>
                     </div>
                     <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
                         The red nights actually have longer bars! This goes contrary to my hypothesis. 
@@ -675,7 +703,7 @@
                     <p class="viz-description">Horizontal bar chart comparing sleep metrics across the different phases of the cycle, revealing which phases bring the most restorative rest.</p>
                     <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: top;">
                         <div class="viz-container">
-                            <iframe src="irma_bar_chart.html" title="Irma Bar Chart" style="height: 400px;"></iframe>
+                            <iframe class="bar-chart" src="irma_bar_chart.html" title="Irma Bar Chart" style="height: 400px;"></iframe>
                         </div>
                         <div>
                             <div class="insight-box">
