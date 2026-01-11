@@ -254,11 +254,11 @@
         
         footer {
             text-align: center;
-            padding: 6rem 0 4rem;
+            padding: 2rem 0 4rem;
             color: var(--text-muted);
             font-size: 0.9rem;
             border-top: 1px solid rgba(196, 215, 224, 0.1);
-            margin-top: 6rem;
+            margin-top: 4rem;
         }
         
         @keyframes fadeIn {
@@ -293,6 +293,27 @@
         }
         
         /* Responsive design */
+        @media (max-width: 1200px) {
+    /* Stack two-column layouts */
+            .intro {
+                display: block !important;
+            }
+            
+            .intro > div {
+                margin-bottom: 2rem;
+            }
+            
+            .viz-card div[style*="display: grid"] {
+                display: block !important;
+            }
+            
+            .viz-card div[style*="display: grid"] > div {
+                margin-bottom: 2rem;
+                padding: 0 !important;
+            }
+        }
+        
+        
         @media (max-width: 768px) {
             h1 {
                 font-size: 3rem;
@@ -313,7 +334,6 @@
             }
             
             .viz-container iframe {
-                height: 120px;
                 transform: scale(0.4);
                 transform-origin: top center;
                 margin-bottom: -240px;  /* Pull up content below */
@@ -343,19 +363,23 @@
             }
 
             .container {
-                padding: 0 2rem !important;  /* Reduced from 4rem to 1rem */
+                padding: 0 1rem;  /* Reduced from 4rem to 1rem */
             }
             
             header {
-                padding: 4rem 0 2rem !important;  /* Reduced top/bottom padding */
+                padding: 4rem 0 1rem;  /* Reduced top/bottom padding */
             }
             
+            .viz-card {
+                padding: 0.8rem;
+            }
+
             .section {
-                margin-bottom: 4rem !important;
+                margin-bottom: 2rem;
 
             /* Stack two-column layouts on mobile - more specific */
             .intro {
-                display: block !important;
+                display: block ;
             }
             
             .intro > div {
@@ -363,12 +387,12 @@
             }
             
             .viz-card div[style*="display: grid"] {
-                display: block !important;
+                display: block ;
             }
             
             .viz-card div[style*="display: grid"] > div {
-                margin-bottom: 2rem;
-                padding: 0 !important;
+                margin-bottom: 1rem;
+                padding: 0 ;
             }
         }
     </style>
@@ -662,7 +686,7 @@
                             </div>
                             <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
                                 Eggy seems to have the most count of poor days followed by PMS, although the boundary between eggy and PMS is difficult to draw. Collectively, they claim most of the poor sleep days.
-                                And we can say for certain that Irma is released of all charges.
+                                <br><br>And with that we can now say for certain that Irma is released of all charges.
                                 <br>Sorry Irma!
                             </p>
                         </div>
@@ -684,8 +708,7 @@
         </section>
         
         <footer>
-            <p>Data collected from Garmin devices over 700 nights | Visualizations created with Plotly and Python</p>
-            <p style="margin-top: 1rem; opacity: 0.6;">Every dataset tells a human story.</p>
+            <p style="opacity: 0.6;">Data collected from Garmin device | Visualizations created with Plotly and Python</p>
         </footer>
     </div>
     
