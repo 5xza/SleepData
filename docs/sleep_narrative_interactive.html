@@ -378,15 +378,25 @@
 
             /* Chart type-specific scaling on mobile */
     
-            /* Circular charts (calendar, radial) */
-            .circular-chart {
-                transform: scale(0.42);
+            /* Circular charts */
+            .circular-grid-chart {
+                transform: scale(0.4);
                 transform-origin: top center;
-                height: 800px;
-                margin-bottom: -560px;  /* Pull up content below */
-                margin-left: -50%;  /* ADD THIS - removes left padding */
-                margin-right: -50%;  /* ADD THIS - removes right padding */
-                width: 200%;
+                height: 760px;
+                margin-bottom: -600px;  /* Pull up content below */
+                margin-left: -56%;  /* ADD THIS - removes left padding */
+                margin-right: -56%;  /* ADD THIS - removes right padding */
+                width: 212%;
+            }
+
+            .circular-bar-chart {
+                transform: scale(0.35);
+                transform-origin: top center;
+                height: 720px;
+                margin-bottom: -680px;  /* Pull up content below */
+                margin-left: -68%;  /* ADD THIS - removes left padding */
+                margin-right: -68%;  /* ADD THIS - removes right padding */
+                width: 236%;
             }
             
             /* Pie chart */
@@ -478,7 +488,7 @@
                         <br>• The bright dots in each cell represent the phases of Irma
                     </p>
                     <div class="viz-container extra-tall">
-                        <iframe class="circular-chart" src="circular_calendar.html" title="Circular Calendar Grid " style="height: 1000px;"></iframe>
+                        <iframe class="circular-grid-chart" src="circular_calendar.html" title="Circular Calendar Grid " style="height: 1000px;"></iframe>
                     </div>
                 </div>
                 
@@ -699,7 +709,7 @@
                         <br> • The rest are Free. 
                     </p>
                     <div class="viz-container extra-tall">
-                        <iframe class="circular-chart" src="irma_radial_chart.html" title="Irma Radial Chart" style="height: 1000px;"></iframe>
+                        <iframe class="circular-bar-chart" src="irma_radial_chart.html" title="Irma Radial Chart" style="height: 1000px;"></iframe>
                     </div>
                     <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
                         The red nights actually have longer bars! This goes contrary to my hypothesis. 
