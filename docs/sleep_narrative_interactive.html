@@ -462,9 +462,9 @@
             <div class="narrative-text">
                 <p>
                     The first thing I did was to make a visual with EVERYTHING in it, so I could look for some meta patterns. 
-                    A special feature of this analysis is the correlation with my monthly subscription to female biology - periods, endearingly referred to as <b>Irma</b> henceforth. 
+                    A special feature of this analysis is the correlation with my monthly subscription to female biology - periods - endearingly referred to as <a href="https://www.youtube.com/watch?v=8w9eoZtnJSA" target="_blank" style="color: var(--accent);">Irma</a> henceforth. 
                     I was convinced that the physical and emotional distress during that time of the month have a negative effect on my sleep quality. 
-                    Though I could only show one year at a time with this circular grid, its a full cycle of all seasons and a pretty good starting point. 
+                    Though I could only show one year at a time with this first chart, its a full cycle of all seasons and a decent starting point. 
                 </p>  
             </div>
             
@@ -475,7 +475,7 @@
                         • Each cell on the grid represents one night of the year.
                         <br>• The colour of each cell is that night's sleep quality score: the bluer the better, the oranger the poorer.
                         <br>• The 12 months are angular slices and the concentric rings show the 7 days of the week.
-                        <br>• And the dots in each cell represent the phases of Irma - The red dots of bloody days are dated accurately. The others are approximations with PMS as ~7 days before the day Irma arrived, Eggy as ~7 days before PMS and the rest are Free.
+                        <br>• The bright dots in each cell represent the phases of Irma
                     </p>
                     <div class="viz-container extra-tall">
                         <iframe class="circular-chart" src="circular_calendar.html" title="Circular Calendar Grid " style="height: 1000px;"></iframe>
@@ -495,9 +495,9 @@
                             </p>
                             <div class="insight-box">
                                 <p class="insight-text">
-                                    96 is the highest ever I ever had, on 4 days in the entire dataset of 700 days. 
-                                    <br>"Very Good" (90-95) or "Excellent" (>95) was a rare black swan sighting. 
-                                    <br>And 100 is just Bigfoot.
+                                    4 days with a score 96 - highest in the entire dataset of 700 days. 
+                                    <br>6 days between 90-95. 
+                                    <br>Not a single 100.
                                 </p>
                             </div>
                         </div>
@@ -510,14 +510,14 @@
                     <div style="display: grid; grid-template-columns: 1fr 1.8fr; gap: 3rem; align-items: top;">
                         <div style="padding: 0rem;">
                             <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
-                                Tempering my ambitions a bit, I want to find the recipe for the 85+, as that is more recurring and concurs with my feeling of a satisfactory sleep. 
-                                <br><br>The lower end definitely has had erratic timings and durations. I can identify many of those were dates when I was travelling. Something to probe in future analysis on this topic.
+                                I want a realistic score goal (not 90+, sigh!) that is closest to what feels like good sleep to me. So I probed the more repeateable 85+ nights for bed/wake times and compared them with nights of under 40 . 
                             </p>
                             <div class="insight-box">
                                 <p class="insight-text">The higher scores have roughly consistent bedtimes of around 11-12 pm and wake time of 8-9 am. </p>
                             </div>
                             <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
-                                I’m not sure if that’s just my body clock, or Garmin in general rewards this particular pattern to all its users. But it's a good lead to explore more.
+                                Most lower scores nights had erratic timings and durations, of course. I can identify many of those were dates when I was travelling.
+                                <br><br>I’m not sure if that’s just my body clock driving the good scores, or Garmin's general standards of sleep/wake times. But it's a good lead to explore more.
                             </p>
                         </div>
                         <div class="viz-container tall">
@@ -548,7 +548,7 @@
             <div class="visualization-grid">                
                 <div class="viz-card">
                     <h3 class="viz-title">Weekly Sleep Quality Distribution</h3>
-                    <p class="viz-description">Horizontal bar chart comparing sleep quality for each day of the week.</p>
+                    <p class="viz-description">Bar chart comparing sleep quality intervals for each day of the week.</p>
                     <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: top;">
                         <div>
                             <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 1rem;">
@@ -556,7 +556,11 @@
                                 And on second thoughts, weekends are not surprising because there is indulgent dining, physical tiredness, and late bed times. Also, many travel days coincide with weekends more than weekdays. 
                             </p>
                             <div class="insight-box">
-                                <p class="insight-text">8/10 of the 90+ scores are on weekdays. </p>
+                                <p class="insight-text">
+                                    8/10 of the 90+ scores are on weekdays. 
+                                    <br> Monday and Tuesday each have highest share of 80+ scores among all days.
+                                    <br>Saturday has the lowest.
+                                </p>
                             </div>
                             <p style="color: var(--moon-glow); line-height: 1.8;">
                                 Note to self - Investigate the extra orange on Tuesday. Maybe its mid-week work fatigue during some specific weeks.
@@ -580,8 +584,8 @@
                         <div>
                             <div class="insight-box">
                                 <p class="insight-text">
-                                    Tuesday is only one with mean sleep >8 hours AND sleep score >70.
-                                    <br>Deep and REM are roughly consistent at ~1 and ~2 hours, but still marginally better on weekdays.
+                                    Tuesday is the only one with mean sleep >8 hours AND sleep score >70 combined.
+                                    <br>Deep and REM are roughly consistent at ~1 and ~2 hours, but still marginally better mid-week.
                                 </p>
                             </div>
                             <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
@@ -615,7 +619,7 @@
             <div class="visualization-grid">
                 <div class="viz-card">
                     <h3 class="viz-title">Monthly Sleep Quality Distribution</h3>
-                    <p class="viz-description">Horizontal bar chart comparing quality across all months.
+                    <p class="viz-description">Bar chart comparing quality intervals across all months
                         <br>*Feb and March have many missing days in the dataset, so these 2 bars might be skewed.
                     </p>
                     <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: top;">
@@ -625,8 +629,7 @@
                                 One of the two things that I can think of that moves in a similar path across months is Temperature, as I previously suspected. 
                             </p>
                             <div class="insight-box">
-                                <p class="insight-text">May to August have ~14% of all poor sleep days (under 40), 
-                                    and ~41% of all good sleep days (above 80).
+                                <p class="insight-text">May to August have ~41% of all good sleep days (above 80), and only ~14% of all poor sleep days (under 40), 
                                 </p>
                             </div>
                             <p style="color: var(--moon-glow); line-height: 1.8;">
@@ -651,12 +654,12 @@
                         <div>
                             <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
                                 Here's another quirky seasonal insight - the quality-score trend is almost an inverse of the sleep-duration trend. 
-                                Even though there more hours of sleep during the colder months, the score is still better in warmer ones.  
+                                Even though there are more hours of sleep during the colder months, the score is still better in warmer ones.  
                             </p>
                             <div class="insight-box">
                                 <p class="insight-text">
-                                    July has the highest mean score (73.17) with highest deep and REM mean durations. 
-                                    <br>December has the highest total sleep duration (8.23 hrs), but has the second lowest mean score (62.55).
+                                    July has the highest mean score (73.17), and the highest mean durationsof deep and REM. 
+                                    <br>December has the highest mean of total sleep duration (8.23 hrs), but has the second lowest mean score (62.55).
                                 </p>
                             </div>
                             <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
@@ -675,7 +678,7 @@
                 <div class="section-number">04</div>
                 <div class="section-title">
                     <h2>Irma's Journey</h2>
-                    <p class="section-subtitle">The cycle of sleep through cycles of biology</p>
+                    <p class="section-subtitle">The cycles of sleep through cycles of biology</p>
                 </div>
             </div>
             
