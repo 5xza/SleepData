@@ -117,8 +117,8 @@
             display: flex;
             align-items: center;
             gap: 2rem;
-            margin-bottom: 3rem;
-            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1.2rem;
             border-bottom: 1px solid rgba(196, 215, 224, 0.2);
         }
         
@@ -394,9 +394,9 @@
                 transform-origin: top center;
                 height: 720px;
                 margin-bottom: -680px;  /* Pull up content below */
-                margin-left: -80%;  /* ADD THIS - removes left padding */
-                margin-right: -80%;  /* ADD THIS - removes right padding */
-                width: 260%;
+                margin-left: -84%;  /* ADD THIS - removes left padding */
+                margin-right: -84%;  /* ADD THIS - removes right padding */
+                width: 268%;
             }
             
             /* Pie chart */
@@ -434,7 +434,7 @@
             .candlestick-chart {
                 transform: scale(0.4);
                 transform-origin: top center;
-                height: 640px !important;
+                height: 720px !important;
                 margin-bottom: -400px;
                 margin-left: -60%;  /* ADD THIS - removes left padding */
                 margin-right: -60%;  /* ADD THIS - removes right padding */
@@ -449,7 +449,7 @@
     
     <div class="container">
         <header>
-            <h1>A-REM-ian nights</h1>
+            <h1>A-REM-ian nights 💤</h1>
             <p class="subtitle">Visualising two years of sleep-data, proving and (mostly) disproving my own sleep related theories</p>
         </header>
         
@@ -473,7 +473,7 @@
                 <p>
                     The first thing I did was to make a visual with EVERYTHING in it, so I could look for some meta patterns. 
                     A special feature of this analysis is the correlation with my monthly subscription to female biology - periods - endearingly referred to as <a href="https://www.youtube.com/watch?v=8w9eoZtnJSA" target="_blank" style="color: var(--accent);">Irma</a> henceforth. 
-                    I was convinced that the physical and emotional distress during that time of the month have a negative effect on my sleep quality. 
+                    I was convinced that the physical and emotional distress during that time of the month has a substantial negative effect on my sleep quality. 
                     Though I could only show one year at a time with this first chart, its a full cycle of all seasons and a decent starting point. 
                 </p>  
             </div>
@@ -494,20 +494,19 @@
                 
                 <div class="viz-card">
                     <h3 class="viz-title">Sleep Quality Distribution</h3>
-                        <p class="viz-description">A pie chart breaking down the proportion of excellent, good, fair, and poor sleep nights across the entire dataset.</p>
+                        <p class="viz-description">A pie chart breaking down the proportion of sleep quality across the entire dataset.</p>
                     <div style="display: grid; grid-template-columns: 1fr 1.8fr; gap: 3rem; align-items: top;">
                         <div class="viz-container">
                             <iframe class="pie-chart" src="sleep_quality_pie.html" title="Sleep Quality Pie Chart" style="height: 400px;"></iframe>
                         </div>
                         <div style="padding: 2rem;">
                             <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 1rem;">
-                                One of the theories I had before the analysis was that I have almost as many poor days as I have good. I was pleasantly surprised to see the low share of poor days, and the remarkably high share of good days. However, the latter mostly ranges just between "Fair" (70s) and "Good" (80s). I kind of knew this which the data now confirmed. 
+                                One of the theories I had before the analysis was that I have almost as many poor scores as I have good. I was pleasantly surprised to see the low share of poor, and the remarkably high share of good scores. However, the latter mostly ranges just between "Fair" (70s) and "Good" (80s). I kind of knew this which the data now confirmed. 
                             </p>
                             <div class="insight-box">
                                 <p class="insight-text">
-                                    4 days with a score 96 - highest in the entire dataset of 700 days. 
-                                    <br>6 days between 90-95. 
-                                    <br>Not a single 100.
+                                    One night with a score 96 - highest in the entire dataset of ~700 nights. That was in Dec-2023, more than 2 years ago.
+                                    <br><br>11 nights were above 90, and only 3 without counting 90.
                                 </p>
                             </div>
                         </div>
@@ -523,7 +522,7 @@
                                 I want a realistic score goal (not 90+, sigh!) that is closest to what feels like good sleep to me. So I probed the more repeateable 85+ scoring nights for bed/wake times and compared them with nights of score under 40. 
                             </p>
                             <div class="insight-box">
-                                <p class="insight-text">The high scores have roughly consistent bedtimes of around 11-12 pm and wake time of 8-9 am. </p>
+                                <p class="insight-text">The high scores have roughly consistent bedtimes of around 11-12 pm and wake time of 8-9 am.</p>
                             </div>
                             <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
                                 Most low scores nights had erratic timings and durations, of course. I can identify many of those were dates when I was travelling.
@@ -531,7 +530,7 @@
                             </p>
                         </div>
                         <div class="viz-container tall">
-                            <iframe class="candlestick-chart" src="candlestick_chart.html" title="Candlestick Chart" style="height: 600px;"></iframe>
+                            <iframe class="candlestick-chart" src="candlestick_chart.html" title="Candlestick Chart" style="height: 720px;"></iframe>
                         </div>
                     </div>
                 </div>
@@ -558,17 +557,17 @@
             <div class="visualization-grid">                
                 <div class="viz-card">
                     <h3 class="viz-title">Weekly Sleep Quality Distribution</h3>
-                    <p class="viz-description">Bar chart comparing sleep quality intervals for each day of the week.</p>
+                    <p class="viz-description">Bar chart comparing sleep quality for each day of the week.</p>
                     <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: top;">
                         <div>
                             <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 1rem;">
-                                Weekdays are clearly doing better than the weekends. It becomes more obvisous when you flatten the bars to Quality intervals. 
-                                And on second thoughts, weekends are not surprising because there is indulgent dining, physical tiredness, and late bed times. Also, many travel days coincide with weekends more than weekdays. 
+                                Weekdays are clearly doing better than the weekends. It becomes more obvisous when you flatten the bars to quality intervals. 
+                                And on second thoughts, weekends are not surprising because there is indulgent dining, physical tiredness, and late bed times. Also, many travel days coincide with the weekends more than the weekdays. 
                             </p>
                             <div class="insight-box">
                                 <p class="insight-text">
-                                    8/10 of the 90+ scores are on weekdays. 
-                                    <br> Monday and Tuesday each have highest, and Saturday has the lowest share of 80+ scores among all days.
+                                    9 of the 11 nights with 90+ scores are weeknights. 
+                                    <br><br>Monday and Tuesday have highest, and Saturday has the lowest share of 80+ scores among all days.
                                 </p>
                             </div>
                             <p style="color: var(--moon-glow); line-height: 1.8;">
@@ -593,14 +592,14 @@
                         <div>
                             <div class="insight-box">
                                 <p class="insight-text">
-                                    Tuesday is the only one with 8+ mean sleep hours AND 70+ mean score combined.
-                                    <br>Deep and REM are roughly consistent at ~1 and ~2 hours, but still marginally better mid-week.
+                                    Deep and REM are roughly consistent at ~1 and ~2 hours, but still marginally better mid-week.
+                                    <br><br>Monday has the highest mean score but lowest mean deep+REM sleep hours.
                                 </p>
                             </div>
                             <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
                                 Garmin says deep sleep is important for physical recovery, whereas REM is good for improving memory function. 
                                 <br><br>I don't mind the extraordinarily long REM. I love that rush of visiting another world, even though I forget the actual dreams soon after waking up. 
-                                But I think it cuts into my deep-sleep. Increasing physical activities/workout could pull in some more Deep, and get me that 100 I dream about.  
+                                But I think it cuts into my deep-sleep. Increasing physical activities/workout could pull in some more deep, and get me that 100 I dream about.  
                             </p>
                         </div>
                     </div>
@@ -621,28 +620,31 @@
             <div class="narrative-text">
                 <p>
                     So far my undisputed theory was that I sleep better in spring, summer, and autumn compared to winter. 
-                    Even though winter has that whole 'cozy holidays' personality, my preferred sleep condition is that it should be cool and breezy, enough to pull up a thin blanket but keep one foot out of the blanket. 
+                    My preferred sleep temperature is when it is cool and breezy, enough to pull up a thin blanket but keep one foot out of the blanket. 
                 </p>
             </div>
             
             <div class="visualization-grid">
                 <div class="viz-card">
                     <h3 class="viz-title">Monthly Sleep Quality Distribution</h3>
-                    <p class="viz-description">Bar chart comparing quality intervals across all months
+                    <p class="viz-description">Bar chart comparing quality across all months
                         <br>*Feb and March have many missing days in the dataset, so these 2 bars might be skewed.
                     </p>
                     <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: top;">
                         <div>
                             <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 1rem;">
-                                Well, hypothesis confirmed about warmer months winning on quality. 
-                                One of the two things that I can think of that moves in a similar path across months is Temperature, as I previously suspected. 
+                                Well, hypothesis only partly confirmed about warmer months winning on quality. 
+                                Besides optimal temperature, there's also higher amount of outdoors physical activity that likely contributes to better sleep quality in warmer months.
                             </p>
                             <div class="insight-box">
-                                <p class="insight-text">May to August have ~41% of all good sleep (80+ score), and only ~14% of all poor sleep (score under 40), 
+                                <p class="insight-text">
+                                    May to August have ~40% of all good sleep (80+ score), and only ~11% of all poor sleep (score under 40). 
                                 </p>
                             </div>
                             <p style="color: var(--moon-glow); line-height: 1.8;">
-                                The second one besides temperature, is the higher amount of outdoors physical activity that likely contributes to better sleep quality in warmer months. 
+                                However, winter is a close second to summer, which I had not expected! 
+                                The blue curves peak in summers, drop in the transitional months of spring an autumn, but rise again in coldest winter months. 
+                                Likely because these are months of low work activity with all the western 'happy holidays' and well regulated indoor temperatures.
                             </p>
                         </div>
                         <div class="viz-container">
@@ -667,13 +669,13 @@
                             </p>
                             <div class="insight-box">
                                 <p class="insight-text">
-                                    July has the highest mean score (73.17), and the highest mean durationsof deep and REM. 
-                                    <br>December has the highest mean of total sleep duration (8.23 hrs), but has the second lowest mean score (62.55).
+                                    July has the highest mean score, and the highest mean durations of deep and REM. 
+                                    <br><br>December has the highest mean total sleep duration, but has the second lowest mean score.
                                 </p>
                             </div>
                             <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
                                 It should be noted that this total sleep duration is the total time spent in bed, including the restless awake moments. 
-                                This explains the poor quality of these longsleep/low score days. 
+                                This would explain the poor quality of these long-sleep-low-score nights. 
                             </p>
                         </div>
                     </div>
@@ -694,7 +696,7 @@
             <div class="narrative-text">
                 <p>
                     The pièce de résistance of this whole study - how has my menstrual cycle been affecting my sleep. 
-                    I made another chart similar to the first circular calendar, but this time with more focus on comparing the cycle days with bar sizes instead of just the colour gradients.
+                    I made another chart similar to the first circular calendar, but this time with more focus on comparing the cycle nights with bar sizes instead of just the colour gradients.
                 </p>
             </div>
             
@@ -704,23 +706,23 @@
                     <p class="viz-description">
                         The red bloody Irma days are dated accurately, naturally. 
                         <br>The others dates are approximations: 
-                        <br> • PMS is ~7 days before the day Irma arrived
-                        <br> • Eggy as ~7 days before PMS
+                        <br> • PMS is ~10 days before the day Irma arrived
+                        <br> • Eggy as ~14 days before the day Irma arrived
                         <br> • The rest are Free. 
                     </p>
                     <div class="viz-container extra-tall">
                         <iframe class="circular-bar-chart" src="irma_radial_chart.html" title="Irma Radial Chart" style="height: 1000px;"></iframe>
                     </div>
                     <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
-                        The red nights actually have longer bars! This goes contrary to my hypothesis. 
-                        Even on the the first 3 days, the bars are mostly long despite max discomfort of intermittent cramps and getting up multiple times in the night to change. 
-                        <br><br>But the hormones must be doing something. And they are, on the other days leading up to the actual Irma arrival. 
-                        The white (”Eggy” aka ovulating days) and yellow (PMS) have more number of short bars compared to other days.
+                        The red nights actually have long bars! This goes contrary to my hypothesis. 
+                        Even on the the first 3 Irma nights, the bars are mostly long despite max discomfort of intermittent cramps and getting up multiple times to change. 
+                        <br><br>But the hormones must be doing something. And they are, on the other nights leading up to the actual Irma arrival. 
+                        The white (”Eggy” aka ovulating days) and yellow (PMS) have more number of short bars compared to other nights.
                     </p>
                 </div>
                 <div class="viz-card">
                     <h3 class="viz-title">Phase Comparison</h3>
-                    <p class="viz-description">Horizontal bar chart comparing sleep metrics across the different phases of the cycle, revealing which phases bring the most restorative rest.</p>
+                    <p class="viz-description">Bar chart comparing quality intervals across the 4 Irma phases </p>
                     <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 3rem; align-items: top;">
                         <div class="viz-container">
                             <iframe class="bar-chart" src="irma_bar_chart.html" title="Irma Bar Chart" style="height: 400px;"></iframe>
@@ -728,12 +730,12 @@
                         <div>
                             <div class="insight-box">
                                 <p class="insight-text">
-                                    Only 1 of all 35 poor nights (score under 40) was an Irma night, whereas 25 were on a PMS or Eggy night.
-                                    <br>7 of the 10 best (90+ score) days are on a Free day. 
+                                    Only 2 of all 40 poor nights (score under 40) was an Irma night, whereas 27 were on a PMS or Eggy night.
+                                    <br><br>8 of the 11 best (90+ score) nights were on a Free night. 
                                 </p>
                             </div>
                             <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
-                                Eggy seems to have the most count of poor days followed by PMS, although the boundary between eggy and PMS is difficult to draw. Collectively, they claim most of the poor sleep days.
+                                PMS has the most count of poor nights followed by Eggy, although the boundary between these two is at best a guess. Collectively, they claim the majority of the poor sleep nights.
                                 <br><br>And with that we can now say for certain that Irma is released of all charges.
                                 <br>Sorry Irma!
                             </p>
@@ -748,7 +750,7 @@
                     <br> • Consistent bed-time and waking-time improve sleep
                     <br> • Weekdays are better than weekends; Summers are better than winters
                     <br> • Increased outdoor physical activities improve sleep
-                    <br> • PMS has latent negative effect compared to actual period days
+                    <br> • PMS has way more latent negative effect compared to actual period days
                     <br><br>Of course, all of this analysis is speculative and there are so many variables in this equation that it cannot give a black and white to-do list. 
                     What it has given me is some debunked theories about my sleep that I was totally convinced with, and an endless curiosity to find out more variables and debunk (or hopefully bunk) more of my theories.
                 </p>
@@ -763,7 +765,7 @@
     <script>
         // Generate random stars
         const starsContainer = document.getElementById('stars');
-        const numberOfStars = 150;
+        const numberOfStars = 55;
         
         for (let i = 0; i < numberOfStars; i++) {
             const star = document.createElement('div');
