@@ -28,7 +28,7 @@
             font-family: 'Source Sans 3', sans-serif;
             background: linear-gradient(to bottom, var(--midnight) 0%, var(--deep-blue) 50%, var(--twilight) 100%);
             color: var(--text-light);
-            line-height: 1.7;
+            line-height: 1.4;
             overflow-x: hidden;
         }
         
@@ -99,6 +99,8 @@
             text-align: left;
             font-size: 1.2rem;
             color: var(--moon-glow);
+            font-weight: 300;
+            letter-spacing: 0.6px;
             animation: fadeIn 1s ease-out 0.3s both;
         }
         
@@ -148,14 +150,16 @@
         }
         
         .narrative-text {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
+            margin-bottom: 1.3rem;
+            font-size: 1rem;
+            line-height: 1.4;
             color: var(--moon-glow);
+            font-weight: 300;
+            letter-spacing: 0.6px;
         }
-        
+
         .narrative-text p {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.3rem;
         }
         
         .visualization-grid {
@@ -192,6 +196,8 @@
             color: var(--text-muted);
             margin-bottom: 0.25rem;
             line-height: 1.6;
+            font-weight: 300;
+            letter-spacing: 0.6px;
         }
         
         /* Interactive chart iframe styling */
@@ -252,9 +258,15 @@
         }
         
         .insight-text {
-            font-size: 1.05rem;
+            font-size: 1rem;
             color: var(--accent);
-            line-height: 1.7;
+            line-height: 1.4;
+            font-weight: 300;
+            letter-spacing: 0.6px;
+        }
+
+        .insight-text + .insight-text {
+            margin-top: 0.6rem;
         }
         
         footer {
@@ -500,13 +512,15 @@
                             <iframe class="pie-chart" src="sleep_quality_pie.html" title="Sleep Quality Pie Chart" style="height: 400px;"></iframe>
                         </div>
                         <div style="padding: 2rem;">
-                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 1rem;">
+                            <p style="color: var(--moon-glow); font-size: 1rem; line-height: 1.4; font-weight: 300; letter-spacing: 0.6px; margin-top: 1rem;">
                                 One of the theories I had before the analysis was that I have almost as many poor scores as I have good. I was pleasantly surprised to see the low share of poor, and the remarkably high share of good scores. However, the latter mostly ranges just between "Fair" (70s) and "Good" (80s). I kind of knew this which the data now confirmed. 
                             </p>
                             <div class="insight-box">
                                 <p class="insight-text">
                                     One night with a score 96 - highest in the entire dataset of ~700 nights. That was in Dec-2023, more than 2 years ago.
-                                    <br><br>11 nights were above 90, and only 3 without counting 90.
+                                </p>
+                                <p class="insight-text">
+                                    11 nights were above 90, and only 3 without counting 90.
                                 </p>
                             </div>
                         </div>
@@ -518,13 +532,13 @@
                     <p class="viz-description">Candlestick chart showing the bed time and waking time pattern.</p>
                     <div style="display: grid; grid-template-columns: 1fr 1.8fr; gap: 3rem; align-items: top;">
                         <div style="padding: 0rem;">
-                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
+                            <p style="color: var(--moon-glow); font-size: 1rem; line-height: 1.4; font-weight: 300; letter-spacing: 0.6px; margin-top: 2rem;">
                                 I want a realistic score goal (not 90+, sigh!) that is closest to what feels like good sleep to me. So I probed the more repeateable 85+ scoring nights for bed/wake times and compared them with nights of score under 40. 
                             </p>
                             <div class="insight-box">
                                 <p class="insight-text">The high scores have roughly consistent bedtimes of around 11-12 pm and wake time of 8-9 am.</p>
                             </div>
-                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
+                            <p style="color: var(--moon-glow); font-size: 1rem; line-height: 1.4; font-weight: 300; letter-spacing: 0.6px; margin-top: 2rem;">
                                 Most low scores nights had erratic timings and durations, of course. I can identify many of those were dates when I was travelling.
                                 <br><br>I’m not sure if that’s just my body clock driving the good scores, or Garmin's general standards of sleep/wake times. But it's a good lead to explore more.
                             </p>
@@ -560,17 +574,19 @@
                     <p class="viz-description">Bar chart comparing sleep quality for each day of the week.</p>
                     <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: top;">
                         <div>
-                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 1rem;">
+                            <p style="color: var(--moon-glow); font-size: 1rem; line-height: 1.4; font-weight: 300; letter-spacing: 0.6px; margin-top: 1rem;">
                                 Weekdays are clearly doing better than the weekends. It becomes more obvisous when you flatten the bars to quality intervals. 
                                 And on second thoughts, weekends are not surprising because there is indulgent dining, physical tiredness, and late bed times. Also, many travel days coincide with the weekends more than the weekdays. 
                             </p>
                             <div class="insight-box">
                                 <p class="insight-text">
-                                    9 of the 11 nights with 90+ scores are weeknights. 
-                                    <br><br>Monday and Tuesday have highest, and Saturday has the lowest share of 80+ scores among all days.
+                                    9 of the 11 nights with 90+ scores are weeknights.
+                                </p>
+                                <p class="insight-text">
+                                    Monday and Tuesday have highest, and Saturday has the lowest share of 80+ scores among all days.
                                 </p>
                             </div>
-                            <p style="color: var(--moon-glow); line-height: 1.8;">
+                            <p style="color: var(--moon-glow); font-size: 1rem; line-height: 1.4; font-weight: 300; letter-spacing: 0.6px;">
                                 Note to self - Investigate the extra orange on Tuesday. Maybe its mid-week work fatigue during some specific weeks.
                             </p>
                         </div>
@@ -593,10 +609,12 @@
                             <div class="insight-box">
                                 <p class="insight-text">
                                     Deep and REM are roughly consistent at ~1 and ~2 hours, but still marginally better mid-week.
-                                    <br><br>Monday has the highest mean score but lowest mean deep+REM sleep hours.
+                                </p>
+                                <p class="insight-text">
+                                    Monday has the highest mean score but lowest mean deep+REM sleep hours.
                                 </p>
                             </div>
-                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
+                            <p style="color: var(--moon-glow); font-size: 1rem; line-height: 1.4; font-weight: 300; letter-spacing: 0.6px; margin-top: 2rem;">
                                 Garmin says deep sleep is important for physical recovery, whereas REM is good for improving memory function. 
                                 <br><br>I don't mind the extraordinarily long REM. I love that rush of visiting another world, even though I forget the actual dreams soon after waking up. 
                                 But I think it cuts into my deep-sleep. Increasing physical activities/workout could pull in some more deep, and get me that 100 I dream about.  
@@ -632,7 +650,7 @@
                     </p>
                     <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: top;">
                         <div>
-                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 1rem;">
+                            <p style="color: var(--moon-glow); font-size: 1rem; line-height: 1.4; font-weight: 300; letter-spacing: 0.6px; margin-top: 1rem;">
                                 Well, hypothesis only partly confirmed about warmer months winning on quality. 
                                 Besides optimal temperature, there's also higher amount of outdoors physical activity that likely contributes to better sleep quality in warmer months.
                             </p>
@@ -641,7 +659,7 @@
                                     May to August have ~40% of all good sleep (80+ score), and only ~11% of all poor sleep (score under 40). 
                                 </p>
                             </div>
-                            <p style="color: var(--moon-glow); line-height: 1.8;">
+                            <p style="color: var(--moon-glow); font-size: 1rem; line-height: 1.4; font-weight: 300; letter-spacing: 0.6px;">
                                 However, winter is a close second to summer, which I had not expected! 
                                 The blue curves peak in summers, drop in the transitional months of spring an autumn, but rise again in coldest winter months. 
                                 Likely because these are months of low work activity with all the western 'happy holidays' and well regulated indoor temperatures.
@@ -663,17 +681,19 @@
                             <iframe class="line-chart" src="monthly_line_chart.html" title="Monthly Line Chart" style="height: 400px;"></iframe>
                         </div>
                         <div>
-                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
+                            <p style="color: var(--moon-glow); font-size: 1rem; line-height: 1.4; font-weight: 300; letter-spacing: 0.6px; margin-top: 2rem;">
                                 Here's another quirky seasonal insight - the quality-score trend is almost an inverse of the sleep-duration trend. 
                                 Even though there are more hours of sleep during the colder months, the score is still better in warmer ones.  
                             </p>
                             <div class="insight-box">
                                 <p class="insight-text">
-                                    July has the highest mean score, and the highest mean durations of deep and REM. 
-                                    <br><br>December has the highest mean total sleep duration, but has the second lowest mean score.
+                                    July has the highest mean score, and the highest mean durations of deep and REM.
+                                </p>
+                                <p class="insight-text">
+                                    December has the highest mean total sleep duration, but has the second lowest mean score.
                                 </p>
                             </div>
-                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
+                            <p style="color: var(--moon-glow); font-size: 1rem; line-height: 1.4; font-weight: 300; letter-spacing: 0.6px; margin-top: 2rem;">
                                 It should be noted that this total sleep duration is the total time spent in bed, including the restless awake moments. 
                                 This would explain the poor quality of these long-sleep-low-score nights. 
                             </p>
@@ -713,7 +733,7 @@
                     <div class="viz-container extra-tall">
                         <iframe class="circular-bar-chart" src="irma_radial_chart.html" title="Irma Radial Chart" style="height: 1000px;"></iframe>
                     </div>
-                    <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
+                    <p style="color: var(--moon-glow); font-size: 1rem; line-height: 1.4; font-weight: 300; letter-spacing: 0.6px; margin-top: 2rem;">
                         The red nights actually have long bars! This goes contrary to my hypothesis. 
                         Even on the the first 3 Irma nights, the bars are mostly long despite max discomfort of intermittent cramps and getting up multiple times to change. 
                         <br><br>But the hormones must be doing something. And they are, on the other nights leading up to the actual Irma arrival. 
@@ -731,10 +751,12 @@
                             <div class="insight-box">
                                 <p class="insight-text">
                                     Only 2 of all 40 poor nights (score under 40) was an Irma night, whereas 27 were on a Lowteal or Eggy night.
-                                    <br><br>8 of the 11 best (90+ score) nights were on a Frolicular night.
+                                </p>
+                                <p class="insight-text">
+                                    8 of the 11 best (90+ score) nights were on a Frolicular night.
                                 </p>
                             </div>
-                            <p style="color: var(--moon-glow); line-height: 1.8; margin-top: 2rem;">
+                            <p style="color: var(--moon-glow); font-size: 1rem; line-height: 1.4; font-weight: 300; letter-spacing: 0.6px; margin-top: 2rem;">
                                 Lowteal has the most count of poor nights followed by Eggy, although the boundary between these two is at best a guess. Collectively, they claim the majority of the poor sleep nights.
                                 <br><br>And with that we can now say for certain that Irma is released of all charges.
                                 <br>Sorry Irma!
